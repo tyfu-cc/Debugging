@@ -30,10 +30,11 @@ public class MeetingScheduler {
         String[] officeHoursTokens = requestLines[0].split(" ");
         LocalTime officeStartTime =  new LocalTime(parseInt(officeHoursTokens[0].substring(0, 2)),
                 parseInt(officeHoursTokens[0].substring(2, 4)));
-                System.out.println(officeHoursTokens[0].substring(2, 4));
+
         //I made change officeHoursToken[?] index "0" to "1"
         LocalTime officeFinishTime =  new LocalTime(parseInt(officeHoursTokens[1].substring(0, 2)),
-                parseInt(officeHoursTokens[0].substring(2, 4)));
+                parseInt(officeHoursTokens[1].substring(2, 4)));
+                System.out.println(parseInt(officeHoursTokens[1].substring(2, 4)));
 
         Map<LocalDate, Set<Meeting>> meetings = new HashMap<LocalDate, Set<Meeting>>();
 
