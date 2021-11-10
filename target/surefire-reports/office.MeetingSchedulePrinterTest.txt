@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: office.MeetingSchedulePrinterTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.173 s <<< FAILURE! - in office.MeetingSchedulePrinterTest
+shouldPrintMeetingSchedule(office.MeetingSchedulePrinterTest)  Time elapsed: 0.108 s  <<< ERROR!
+java.lang.IllegalArgumentException: Invalid format: "10:17:06" is malformed at ":06"
+	at office.MeetingSchedulePrinterTest.shouldPrintMeetingSchedule(MeetingSchedulePrinterTest.java:41)
+

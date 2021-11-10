@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: office.MeetingSchedulerTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in office.MeetingSchedulerTest
+shouldParseMeetingRequest(office.MeetingSchedulerTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalArgumentException: Invalid format: "10:17:06" is malformed at ":06"
+	at office.MeetingSchedulerTest.shouldParseMeetingRequest(MeetingSchedulerTest.java:56)
+
+shouldGroupMeetingsChronologically(office.MeetingSchedulerTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalArgumentException: Invalid format: "10:17:06" is malformed at ":06"
+	at office.MeetingSchedulerTest.shouldGroupMeetingsChronologically(MeetingSchedulerTest.java:121)
+
+shouldParseOfficeHours(office.MeetingSchedulerTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+	at office.MeetingSchedulerTest.shouldParseOfficeHours(MeetingSchedulerTest.java:41)
+
+shouldNotHaveOverlappingMeetings(office.MeetingSchedulerTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalArgumentException: Invalid format: "10:17:06" is malformed at ":06"
+	at office.MeetingSchedulerTest.shouldNotHaveOverlappingMeetings(MeetingSchedulerTest.java:154)
+
+shouldNotBookMeetingRoomOutsideOfficeHours(office.MeetingSchedulerTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalArgumentException: Invalid format: "17:29:12" is malformed at ":12"
+	at office.MeetingSchedulerTest.shouldNotBookMeetingRoomOutsideOfficeHours(MeetingSchedulerTest.java:78)
+
+shouldProcessMeetingsInChronologicalOrderOfSubmission(office.MeetingSchedulerTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalArgumentException: Invalid format: "10:17:06" is malformed at ":06"
+	at office.MeetingSchedulerTest.shouldProcessMeetingsInChronologicalOrderOfSubmission(MeetingSchedulerTest.java:96)
+

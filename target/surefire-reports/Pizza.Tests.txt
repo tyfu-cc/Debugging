@@ -1,0 +1,40 @@
+-------------------------------------------------------------------------------
+Test set: Pizza.Tests
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 0, Errors: 9, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in Pizza.Tests
+test1(Pizza.Tests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3
+	at Pizza.Tests.test1(Tests.java:12)
+
+test2(Pizza.Tests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3
+	at Pizza.Tests.test2(Tests.java:19)
+
+test3(Pizza.Tests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3
+	at Pizza.Tests.test3(Tests.java:26)
+
+test4(Pizza.Tests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 6 out of bounds for length 6
+	at Pizza.Tests.test4(Tests.java:33)
+
+test5(Pizza.Tests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 2 out of bounds for length 2
+	at Pizza.Tests.test5(Tests.java:40)
+
+test6(Pizza.Tests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 2 out of bounds for length 2
+	at Pizza.Tests.test6(Tests.java:47)
+
+test7(Pizza.Tests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 6 out of bounds for length 6
+	at Pizza.Tests.test7(Tests.java:54)
+
+test8(Pizza.Tests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 8 out of bounds for length 8
+	at Pizza.Tests.test8(Tests.java:61)
+
+test9(Pizza.Tests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IndexOutOfBoundsException: Index 3 out of bounds for length 3
+	at Pizza.Tests.test9(Tests.java:68)
+
