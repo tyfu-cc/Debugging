@@ -34,16 +34,19 @@ public class MeetingScheduler {
         //I made change officeHoursToken[?] index "0" to "1"
         LocalTime officeFinishTime =  new LocalTime(parseInt(officeHoursTokens[1].substring(0, 2)),
                 parseInt(officeHoursTokens[1].substring(2, 4)));
-                System.out.println(parseInt(officeHoursTokens[1].substring(2, 4)));
+                //System.out.println(parseInt(officeHoursTokens[1].substring(2, 4)));
 
         Map<LocalDate, Set<Meeting>> meetings = new HashMap<LocalDate, Set<Meeting>>();
-
-        for(int i=1;i<requestLines.length;i=i+2){
+        // i should starts from 2 not 1, since 2 is referred to the request meetingstarttime, with i = i+2
+        for(int i=2;i<requestLines.length;i=i+2){
 
             String[] meetingSlotRequest = requestLines[i].split(" ");
+            // I changed the meetingSLotRequest index 1 to 0 ,since 1 is time rather than the meetingDate,which is wanted
             LocalDate meetingDate = dateFormatter.parseLocalDate(meetingSlotRequest[0]);
 
-            Meeting meeting = extractMeeting(requestLines[i+1], officeStartTime, officeFinishTime, meetingSlotRequest);
+            //below is original
+            //Meeting meeting = extractMeeting(requestLines[i+1], officeStartTime, officeFinishTime, meetingSlotRequest);
+            Meeting meeting = extractMeeting(requestLines[0+i-1], officeStartTime, officeFinishTime, meetingSlotRequest);
 
             if(meetings.containsKey(meetingDate)){
                 meetings.get(meetingDate).remove(meeting);
