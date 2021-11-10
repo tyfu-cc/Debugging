@@ -53,7 +53,7 @@ public class PizzaParty {
                 guest.drink(beers);
             }
             //test consumedCalories if changed?
-            System.out.println(this.consumedCalories);
+            //System.out.println(this.consumedCalories);
         }
         //if bottle of beers < the number of people, let them drink again
         while(beers.size()>0){
