@@ -25,7 +25,7 @@ public class MeetingSchedulePrinter {
     }
 
     public String print(String meetingRequest) {
-        MeetingsSchedule meetingsScheduleBooked = meetingScheduler.schedule(meetingRequest);
+        MeetingsSchedule meetingsScheduleBooked = this.meetingScheduler.schedule(meetingRequest);
 
         return buildMeetingScheduleString(meetingsScheduleBooked);
 

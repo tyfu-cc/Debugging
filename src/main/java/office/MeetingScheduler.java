@@ -43,12 +43,20 @@ public class MeetingScheduler {
             String[] meetingSlotRequest = requestLines[i].split(" ");
             // I changed the meetingSLotRequest index 1 to 0 ,since 1 is time rather than the meetingDate,which is wanted
             LocalDate meetingDate = dateFormatter.parseLocalDate(meetingSlotRequest[0]);
-
+            //helper reuqested part
+            String[] requestedTime = requestLines[i-1].split(" ");
+            LocalTime requestedTimesubmited =  new LocalTime(parseInt(requestedTime[1].substring(0, 2)),
+                    parseInt(requestedTime[1].substring(2, 4)));
             //below is original
             //Meeting meeting = extractMeeting(requestLines[i+1], officeStartTime, officeFinishTime, meetingSlotRequest);
             Meeting meeting = extractMeeting(requestLines[0+i-1], officeStartTime, officeFinishTime, meetingSlotRequest);
+            //correspond to ine 47-50, set meeting.submittime
+            if(i>=2){
+                meeting.setRecordSubmittedTime(requestedTimesubmited);
+            }
 
             if(meetings.containsKey(meetingDate)){
+
                 meetings.get(meetingDate).remove(meeting);
                 meetings.get(meetingDate).add(meeting);
             }else {
@@ -61,8 +69,16 @@ public class MeetingScheduler {
             }
         }
 
+
         return new MeetingsSchedule(officeStartTime, officeFinishTime, meetings);
     }
+    //ChronologicalVerify
+//    private LocalDate dateChronologicalVerify(){
+//
+//    }
+//    private LocalTime timeChronologicalVerift(){
+//
+//    }
 
     private Meeting extractMeeting(String requestLine, LocalTime officeStartTime, LocalTime officeFinishTime, String[] meetingSlotRequest) {
         String[] employeeRequest = requestLine.split(" ");
@@ -87,7 +103,7 @@ public class MeetingScheduler {
        return meetingStartTime.isBefore(officeStartTime)
                 || meetingStartTime.isAfter(officeFinishTime)
                 || meetingFinishTime.isAfter(officeFinishTime)
-               || meetingFinishTime.isBefore(officeStartTime);
+                || meetingFinishTime.isBefore(officeStartTime);
 
 //        return meetingStartTime.isAfter(officeStartTime)
 //                && meetingStartTime.isBefore(officeFinishTime)
