@@ -53,8 +53,11 @@ public class MeetingScheduler {
                 meetings.get(meetingDate).add(meeting);
             }else {
                 Set<Meeting> meetingsForDay = new HashSet<Meeting>();
-                meetingsForDay.add(meeting);
-                meetings.put(meetingDate, meetingsForDay);
+                //I added if meeting is not null to make we add exact existed meeting
+                if (meeting != null) {
+                    meetingsForDay.add(meeting);
+                    meetings.put(meetingDate, meetingsForDay);
+                }
             }
         }
 
@@ -79,9 +82,18 @@ public class MeetingScheduler {
     }
 
     private boolean meetingTimeOutsideOfficeHours(LocalTime officeStartTime, LocalTime officeFinishTime, LocalTime meetingStartTime, LocalTime meetingFinishTime) {
-        return meetingStartTime.isBefore(officeStartTime)
+        // officeStart2officeFinishtime is 9:00-17:30, meetingStartTime is 16:00-19:00(last for 3 hours) In @test shouldNotBookMeetingRoomOutsideOfficeHours
+        //below is original version
+       return meetingStartTime.isBefore(officeStartTime)
                 || meetingStartTime.isAfter(officeFinishTime)
                 || meetingFinishTime.isAfter(officeFinishTime)
-                || meetingFinishTime.isBefore(officeStartTime);
+               || meetingFinishTime.isBefore(officeStartTime);
+
+//        return meetingStartTime.isAfter(officeStartTime)
+//                && meetingStartTime.isBefore(officeFinishTime)
+//                && meetingFinishTime.isBefore(officeFinishTime)
+//                && meetingFinishTime.isAfter(officeStartTime);
+
+
     }
 }
