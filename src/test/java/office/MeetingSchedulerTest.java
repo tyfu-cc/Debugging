@@ -85,6 +85,7 @@ public class MeetingSchedulerTest {
     @Test
     public void shouldProcessMeetingsInChronologicalOrderOfSubmission() {
         //given
+
         meetingRequest =
                 "0900 1730\n" +
                 "2011-03-17 10:17:06 EMP001\n" +
