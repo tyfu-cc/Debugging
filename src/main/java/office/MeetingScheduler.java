@@ -38,7 +38,7 @@ public class MeetingScheduler {
                 parseInt(officeHoursTokens[1].substring(2, 4)));
 
 
-        Map<LocalDate, Set<Meeting>> meetings = new HashMap<LocalDate, Set<Meeting>>();
+        Map<LocalDate, SortedSet<Meeting>> meetings = new TreeMap<>();
         // i should starts from 2 not 1, since 2 is referred to the request meetingstarttime, with i = i+2
         for(int i=2;i<requestLines.length;i=i+2){
 
@@ -51,7 +51,6 @@ public class MeetingScheduler {
             ;
             //LocalTime submittedTime =  new LocalTime(parseInt(requestedTime[1].substring(0, 2)),
                    //parseInt(requestedTime[1].substring(2, 4)));
-
             //below is original
             //Meeting meeting = extractMeeting(requestLines[i+1], officeStartTime, officeFinishTime, meetingSlotRequest);
             Meeting meeting = extractMeeting(requestLines[0+i-1], officeStartTime, officeFinishTime, meetingSlotRequest);
@@ -60,7 +59,7 @@ public class MeetingScheduler {
 //            if(i>=2){
 //                meeting.setRecordSubmittedTime(submittedTime);
 //            }
-            Set<Meeting> meetingsForDay = new HashSet<Meeting>();
+            SortedSet<Meeting> meetingsForDay = new TreeSet<>();
             if(meetings.containsKey(meetingDate)){
             //want to compare time for each meeting
                 meetings.get(meetingDate).remove(meeting);
