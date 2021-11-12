@@ -28,15 +28,15 @@ public class MeetingsSchedule {
     }
 
     public LocalTime getOfficeStartTime() {
-        return officeStartTime;
+        return this.officeStartTime;
     }
 
     public LocalTime getOfficeFinishTime() {
-        return officeFinishTime;
+        return this.officeFinishTime;
     }
 
     public Map<LocalDate, Set<Meeting>> getMeetings() {
-        return meetings;
+        return this.meetings;
     }
 
 }
