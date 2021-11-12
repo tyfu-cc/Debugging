@@ -7,6 +7,7 @@ import org.joda.time.format.DateTimeFormatter;
 
 import java.util.*;
 
+
 import static java.lang.Integer.parseInt;
 
 /**
@@ -18,6 +19,7 @@ public class MeetingScheduler {
 
     private DateTimeFormatter dateFormatter = DateTimeFormat.forPattern("yyyy-MM-dd");
     private DateTimeFormatter separatedTimeFormatter = DateTimeFormat.forPattern("HH:mm");
+
 
     /**
      *
@@ -34,7 +36,7 @@ public class MeetingScheduler {
         //I made change officeHoursToken[?] index "0" to "1"
         LocalTime officeFinishTime =  new LocalTime(parseInt(officeHoursTokens[1].substring(0, 2)),
                 parseInt(officeHoursTokens[1].substring(2, 4)));
-                //System.out.println(parseInt(officeHoursTokens[1].substring(2, 4)));
+
 
         Map<LocalDate, Set<Meeting>> meetings = new HashMap<LocalDate, Set<Meeting>>();
         // i should starts from 2 not 1, since 2 is referred to the request meetingstarttime, with i = i+2
@@ -45,22 +47,26 @@ public class MeetingScheduler {
             LocalDate meetingDate = dateFormatter.parseLocalDate(meetingSlotRequest[0]);
             //helper reuqested part
             String[] requestedTime = requestLines[i-1].split(" ");
-            LocalTime requestedTimesubmited =  new LocalTime(parseInt(requestedTime[1].substring(0, 2)),
-                    parseInt(requestedTime[1].substring(2, 4)));
+            LocalTime submittedTime = LocalTime.parse(requestedTime[1]);
+            ;
+            //LocalTime submittedTime =  new LocalTime(parseInt(requestedTime[1].substring(0, 2)),
+                   //parseInt(requestedTime[1].substring(2, 4)));
+
             //below is original
             //Meeting meeting = extractMeeting(requestLines[i+1], officeStartTime, officeFinishTime, meetingSlotRequest);
             Meeting meeting = extractMeeting(requestLines[0+i-1], officeStartTime, officeFinishTime, meetingSlotRequest);
+            if(meeting!= null){meeting.setRecordSubmittedTime(submittedTime);}
             //correspond to ine 47-50, set meeting.submittime
-            if(i>=2){
-                meeting.setRecordSubmittedTime(requestedTimesubmited);
-            }
-
+//            if(i>=2){
+//                meeting.setRecordSubmittedTime(submittedTime);
+//            }
+            Set<Meeting> meetingsForDay = new HashSet<Meeting>();
             if(meetings.containsKey(meetingDate)){
-
+            //want to compare time for each meeting
                 meetings.get(meetingDate).remove(meeting);
                 meetings.get(meetingDate).add(meeting);
             }else {
-                Set<Meeting> meetingsForDay = new HashSet<Meeting>();
+                //Set<Meeting> meetingsForDay = new HashSet<Meeting>();
                 //I added if meeting is not null to make we add exact existed meeting
                 if (meeting != null) {
                     meetingsForDay.add(meeting);
@@ -68,8 +74,6 @@ public class MeetingScheduler {
                 }
             }
         }
-
-
         return new MeetingsSchedule(officeStartTime, officeFinishTime, meetings);
     }
     //ChronologicalVerify

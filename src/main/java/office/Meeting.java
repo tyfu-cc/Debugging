@@ -15,6 +15,16 @@ public class Meeting implements Comparable<Meeting>{
     private LocalTime startTime;
 
     private LocalTime finishTime;
+    //Add a helper var to record when is this meeting requested
+
+    private LocalTime formsubmmittedTime;
+
+    public void setRecordSubmittedTime(LocalTime time){
+        this.formsubmmittedTime = time;
+    }
+    public LocalTime getFormsubmmittedTime(){
+        return formsubmmittedTime;
+    }
 
     public Meeting(String employeeId, LocalTime startTime, LocalTime finishTime) {
         this.employeeId = employeeId;
